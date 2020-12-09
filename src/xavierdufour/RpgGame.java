@@ -25,7 +25,8 @@ public class RpgGame extends Game {
         RenderingEngine.getInstance().getScreen().fullScreen();
         gamePad = new GamePad();
         player = new Player(gamePad);
-        //setupMaps();
+        setupMaps();
+        currentMap = worldMap;
         //load musics
     }
 
@@ -39,7 +40,7 @@ public class RpgGame extends Game {
 
     @Override
     public void draw(Buffer buffer) {
-        buffer.drawRectangle(50, 50, 50, 50, Color.RED);
+        currentMap.draw(buffer);
         player.draw(buffer);
     }
 
@@ -49,8 +50,8 @@ public class RpgGame extends Game {
 
 
     private void setupMaps() {
-        ArrayList<Blockade> villageBlockade = new ArrayList<>();
-        village = new World("maps/village", villageBlockade);
+        //ArrayList<Blockade> villageBlockade = new ArrayList<>();
+        //village = new World("maps/village", villageBlockade);
         /*
         * TODO Add World Blockades and instantiate them all
         * */
