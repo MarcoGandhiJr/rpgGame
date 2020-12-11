@@ -6,7 +6,6 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class World {
 
@@ -17,17 +16,17 @@ public class World {
     private int y;
 
     public World(String mapPath, ArrayList<Blockade> worldBorders) {
+        this.worldBorders = new ArrayList<>();
         MAP_PATH = mapPath;
         loadBackground();
         this.worldBorders = worldBorders;
     }
 
-    public void updateCamera() {
-
-    }
-
     public void draw(Buffer buffer) {
         buffer.drawImage(background, 0, 0);
+        for (Blockade blockade : worldBorders) {
+            blockade.draw(buffer);
+        }
     }
 
     private void loadBackground() {

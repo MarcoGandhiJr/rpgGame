@@ -1,5 +1,9 @@
 package xavierdufour;
 
+import xavierdufour.engine.Buffer;
+
+import javax.management.loading.ClassLoaderRepository;
+import java.awt.*;
 import java.util.Random;
 
 public class CombatInfo {
@@ -39,7 +43,7 @@ public class CombatInfo {
 
     public void heal() {
         Random random = new Random();
-        if (currentMana < 50) {
+        if (currentMana > 50) {
             currentMana -= 50;
             currentHealth += healingPower - random.nextInt(1);
             if (currentHealth > MAXIMUM_HEALTH) {
@@ -47,5 +51,21 @@ public class CombatInfo {
             }
         }
 
+    }
+
+    public boolean isDead() {
+        return currentHealth <= 0;
+    }
+
+    public boolean wantToHeal() {
+        return currentHealth < 25 && currentMana >= 50;
+    }
+
+    public void printHealth(Buffer buffer, int x, int y, String healthOwner) {
+        buffer.drawText(healthOwner, x, y - 15, Color.RED);
+        for (int i = 0; i < currentHealth / 10; i++) {
+            buffer.drawText("❤️", x, y, Color.RED);
+            x += 10;
+        }
     }
 }

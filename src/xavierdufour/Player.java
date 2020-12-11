@@ -29,6 +29,7 @@ public class Player extends ControllableEntity {
         super(controller);
         setSpeed(3);
         setDimension(32, 32);
+        setDirection(Direction.DOWN);
         loadSpriteSheet();
         loadFrames();
         setupPlayer();
@@ -51,6 +52,10 @@ public class Player extends ControllableEntity {
         } else if (getDirection() == Direction.RIGHT) {
             buffer.drawImage(rightFrames[currentAnimationFrame], x, y);
         }
+    }
+
+    public CombatInfo fight() {
+        return stats;
     }
 
     private void changeFrame() {

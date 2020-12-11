@@ -78,7 +78,7 @@ public class RenderingEngine {
     private void initializeFrame() {
         screen = new Screen();
         screen.setSize(800, 600);
-        screen.setTitle("Rpg Game");
+        screen.setTitle("Xavier's Rpg Game");
     }
 
     private RenderingHints getOptimalRenderingHints() {
